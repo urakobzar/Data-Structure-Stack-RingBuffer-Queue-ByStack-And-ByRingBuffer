@@ -13,13 +13,13 @@ enum MenuQueueBuffer
     QueueBufferExitItem = 4
 };
 
-/// @brief Функция вывода Очереди на экран
-/// @param queueBuffer Переменная структуры Очереди
+/// @brief Р¤СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° РћС‡РµСЂРµРґРё РЅР° СЌРєСЂР°РЅ
+/// @param queueBuffer РџРµСЂРµРјРµРЅРЅР°СЏ СЃС‚СЂСѓРєС‚СѓСЂС‹ РћС‡РµСЂРµРґРё
 void PrintQueueBuffer(QueueBuffer& queueBuffer)
 {
     if (queueBuffer.FilledPlaceCounter != 0)
     {
-        cout << "\nКольцевой буфер:\n";
+        cout << "\nРљРѕР»СЊС†РµРІРѕР№ Р±СѓС„РµСЂ:\n";
         for (int i = 0; i < queueBuffer.BufferSize; i++)
         {
             if (queueBuffer.IsPlaceFilled[i] == true)
@@ -37,8 +37,8 @@ void PrintQueueBuffer(QueueBuffer& queueBuffer)
     }
     else
     {
-        cout << "Очередь пуста!\n";
-        cout << "Возвращение в меню выбора\n";
+        cout << "РћС‡РµСЂРµРґСЊ РїСѓСЃС‚Р°!\n";
+        cout << "Р’РѕР·РІСЂР°С‰РµРЅРёРµ РІ РјРµРЅСЋ РІС‹Р±РѕСЂР°\n";
     }
 }
 
@@ -49,16 +49,16 @@ void QueueBufferActions()
     bool queueExit = true;
     while (queueExit)
     {
-        cout << "\nЧто вы хотите сделать?\n";
+        cout << "\nР§С‚Рѕ РІС‹ С…РѕС‚РёС‚Рµ СЃРґРµР»Р°С‚СЊ?\n";
         if (!checkQueueMaking)
         {
-            cout << "0: Создать очередь\n";
+            cout << "0: РЎРѕР·РґР°С‚СЊ РѕС‡РµСЂРµРґСЊ\n";
         }
-        cout << "1: Добавить элемент в очередь\n";
-        cout << "2: Удалить элемент из очереди\n";
-        cout << "3: Вывести очередь\n";
-        cout << "4: Выйти в главное меню\n";
-        cout << "\nВведите ваш вариант действий: ";
+        cout << "1: Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚ РІ РѕС‡РµСЂРµРґСЊ\n";
+        cout << "2: РЈРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚ РёР· РѕС‡РµСЂРµРґРё\n";
+        cout << "3: Р’С‹РІРµСЃС‚Рё РѕС‡РµСЂРµРґСЊ\n";
+        cout << "4: Р’С‹Р№С‚Рё РІ РіР»Р°РІРЅРѕРµ РјРµРЅСЋ\n";
+        cout << "\nР’РІРµРґРёС‚Рµ РІР°С€ РІР°СЂРёР°РЅС‚ РґРµР№СЃС‚РІРёР№: ";
         int localNumber = ReadingCorrectValue();
         cout << endl;
         switch (localNumber)
@@ -67,7 +67,7 @@ void QueueBufferActions()
             {
                 if (checkQueueMaking)
                 {
-                    cout << "Очередь уже создана!\n";
+                    cout << "РћС‡РµСЂРµРґСЊ СѓР¶Рµ СЃРѕР·РґР°РЅР°!\n";
                     system("pause");
                     break;
                 }
@@ -75,7 +75,7 @@ void QueueBufferActions()
                 int sizeQueue = ReadingCorrectSize();
                 for (int index = 0; index < sizeQueue; index++)
                 {
-                    cout << "Введите элемент очереди " << index + 1 << ": ";
+                    cout << "Р’РІРµРґРёС‚Рµ СЌР»РµРјРµРЅС‚ РѕС‡РµСЂРµРґРё " << index + 1 << ": ";
                     int newElement = ReadingCorrectValue();
                     EnqueueQueueBuffer(queueBuffer, newElement);
                 }
@@ -89,9 +89,9 @@ void QueueBufferActions()
                 {
                     break;
                 }
-                cout << "*Вы решили добавить";
-                cout << " элемент в очередь*\n";
-                cout << "\nВведите добавляемый элемент: ";
+                cout << "*Р’С‹ СЂРµС€РёР»Рё РґРѕР±Р°РІРёС‚СЊ";
+                cout << " СЌР»РµРјРµРЅС‚ РІ РѕС‡РµСЂРµРґСЊ*\n";
+                cout << "\nР’РІРµРґРёС‚Рµ РґРѕР±Р°РІР»СЏРµРјС‹Р№ СЌР»РµРјРµРЅС‚: ";
                 int newElement = ReadingCorrectValue();
                 EnqueueQueueBuffer(queueBuffer, newElement);
                 PrintQueueBuffer(queueBuffer);
@@ -107,9 +107,9 @@ void QueueBufferActions()
                 if (queueBuffer.FilledPlaceCounter != 0)
                 {
                     DequeueQueueBuffer(queueBuffer);
-                    cout << "*Вы решили достать элемент";
-                    cout << " из кольцевого буфера*\n";
-                    cout << "Удаляемый элемент: ";
+                    cout << "*Р’С‹ СЂРµС€РёР»Рё РґРѕСЃС‚Р°С‚СЊ СЌР»РµРјРµРЅС‚";
+                    cout << " РёР· РєРѕР»СЊС†РµРІРѕРіРѕ Р±СѓС„РµСЂР°*\n";
+                    cout << "РЈРґР°Р»СЏРµРјС‹Р№ СЌР»РµРјРµРЅС‚: ";
                     cout << queueBuffer.First << endl;
                     if (queueBuffer.FilledPlaceCounter != 0)
                     {
@@ -118,8 +118,8 @@ void QueueBufferActions()
                 }
                 else
                 {
-                    cout << "Очередь пуста!\n";
-                    cout << "Возвращение в меню выбора\n";
+                    cout << "РћС‡РµСЂРµРґСЊ РїСѓСЃС‚Р°!\n";
+                    cout << "Р’РѕР·РІСЂР°С‰РµРЅРёРµ РІ РјРµРЅСЋ РІС‹Р±РѕСЂР°\n";
                 }
                 system("pause");
                 break;
@@ -138,18 +138,18 @@ void QueueBufferActions()
                 if (checkQueueMaking)
                 {
                     DeleteQueue(queueBuffer);
-                    cout << "*(Очередь автоматически удалена)*\n";
+                    cout << "*(РћС‡РµСЂРµРґСЊ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё СѓРґР°Р»РµРЅР°)*\n";
                 }
-                cout << "*Вы решили вернуться ";
-                cout << "в главное меню*\n";
+                cout << "*Р’С‹ СЂРµС€РёР»Рё РІРµСЂРЅСѓС‚СЊСЃСЏ ";
+                cout << "РІ РіР»Р°РІРЅРѕРµ РјРµРЅСЋ*\n";
                 queueExit = false;
                 system("pause");
                 break;
             }
             default:
             {
-                cout << "Вы ошиблись!\n";
-                cout << "Введите правильно!\n\n";
+                cout << "Р’С‹ РѕС€РёР±Р»РёСЃСЊ!\n";
+                cout << "Р’РІРµРґРёС‚Рµ РїСЂР°РІРёР»СЊРЅРѕ!\n\n";
                 system("pause");
                 break;
             }
