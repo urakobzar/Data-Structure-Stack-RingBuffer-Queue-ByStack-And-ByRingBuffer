@@ -1,5 +1,5 @@
 #pragma once
 #include "RingBuffer.h"
 
-/// @brief Р¤СѓРЅРєС†РёСЏ РґРµР№СЃС‚РІРёР№ СЃ РљРѕР»СЊС†РµРІС‹Рј Р‘СѓС„РµСЂРѕРј
+/// @brief Функция действий с Кольцевым Буфером
 void BufferActions();

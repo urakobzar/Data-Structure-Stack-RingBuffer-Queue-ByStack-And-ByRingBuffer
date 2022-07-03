@@ -13,8 +13,8 @@ enum MenuQueueStack
     QueueStackExitItem = 4
 };
 
-/// @brief Р¤СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° РЎС‚РµРєР°
-/// @param stack РџРµСЂРµРјРµРЅРЅР°СЏ СЃС‚СЂСѓРєС‚СѓСЂС‹ РЎС‚РµРєР°
+/// @brief Функция вывода Стека
+/// @param stack Переменная структуры Стека
 void PrintStack(QueueBasedStack& stack)
 {
     for (int i = 0; i < stack.Tail; i++)
@@ -25,12 +25,12 @@ void PrintStack(QueueBasedStack& stack)
 }
 
 
-/// @brief Р¤СѓРЅРєРєС†РёСЏ РІС‹РІРѕРґР° РћС‡РµСЂРµРґРё РЅР° СЌРєСЂР°РЅ
-/// @param popStack РџРµСЂРµРјРµРЅРЅР°СЏ СЃС‚СЂСѓРєС‚СѓСЂС‹ РћС‡РµСЂРµРґРё
-/// @param pushStack РџРµСЂРµРјРµРЅРЅР°СЏ СЃС‚СЂСѓРєС‚СѓСЂС‹ РћС‡РµСЂРµРґРё
+/// @brief Функкция вывода Очереди на экран
+/// @param popStack Переменная структуры Очереди
+/// @param pushStack Переменная структуры Очереди
 void PrintQueueStack(QueueBasedStack& popStack, QueueBasedStack& pushStack)
 {  
-    cout << "РћС‡РµСЂРµРґСЊ: ";
+    cout << "Очередь: ";
     if ((pushStack.Tail != 0) || (popStack.Tail != 0))
     {
         if (popStack.Tail != 0)
@@ -52,8 +52,8 @@ void PrintQueueStack(QueueBasedStack& popStack, QueueBasedStack& pushStack)
     }
     else
     {
-        cout << "РћС‡РµСЂРµРґСЊ РїСѓСЃС‚Р°!\n";
-        cout << "Р’РѕР·РІСЂР°С‰РµРЅРёРµ РІ РјРµРЅСЋ РІС‹Р±РѕСЂР°\n";
+        cout << "Очередь пуста!\n";
+        cout << "Возвращение в меню выбора\n";
     }       
 }
 
@@ -67,16 +67,16 @@ void QueueStackActions()
     bool queueExit = true;
     while (queueExit)
     {
-        cout << "\nР§С‚Рѕ РІС‹ С…РѕС‚РёС‚Рµ СЃРґРµР»Р°С‚СЊ?\n";
+        cout << "\nЧто вы хотите сделать?\n";
         if (!checkQueueMaking)
         {
-            cout << "0: РЎРѕР·РґР°С‚СЊ РѕС‡РµСЂРµРґСЊ\n";
+            cout << "0: Создать очередь\n";
         }
-        cout << "1: Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚ РІ РѕС‡РµСЂРµРґСЊ\n";
-        cout << "2: РЈРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚ РёР· РѕС‡РµСЂРµРґРё\n";
-        cout << "3: Р’С‹РІРµСЃС‚Рё РѕС‡РµСЂРµРґСЊ\n";
-        cout << "4: Р’С‹Р№С‚Рё РІ РіР»Р°РІРЅРѕРµ РјРµРЅСЋ\n";
-        cout << "\nР’РІРµРґРёС‚Рµ РІР°С€ РІР°СЂРёР°РЅС‚ РґРµР№СЃС‚РІРёР№: ";
+        cout << "1: Добавить элемент в очередь\n";
+        cout << "2: Удалить элемент из очереди\n";
+        cout << "3: Вывести очередь\n";
+        cout << "4: Выйти в главное меню\n";
+        cout << "\nВведите ваш вариант действий: ";
         int localNumber = ReadingCorrectValue();
         cout << endl;
         switch (localNumber)
@@ -85,15 +85,15 @@ void QueueStackActions()
             {
                 if (checkQueueMaking)
                 {
-                    cout << "РћС‡РµСЂРµРґСЊ СѓР¶Рµ СЃРѕР·РґР°РЅР°!\n";
+                    cout << "Очередь уже создана!\n";
                     system("pause");
                     break;
                 }
-                cout << "*Р’С‹ СЂРµС€РёР»Рё СЃРѕР·РґР°С‚СЊ РѕС‡РµСЂРµРґСЊ*\n";
+                cout << "*Вы решили создать очередь*\n";
                 int sizeQueue = ReadingCorrectSize();
                 for (int index = 0; index < sizeQueue; index++)
                 {
-                    cout << "Р’РІРµРґРёС‚Рµ СЌР»РµРјРµРЅС‚ РѕС‡РµСЂРµРґРё " << index + 1 << ": ";
+                    cout << "Введите элемент очереди " << index + 1 << ": ";
                     int addElement = ReadingCorrectValue();
                     EnqueueStack(pushStack, addElement);
                 }
@@ -107,9 +107,9 @@ void QueueStackActions()
                 {
                     break;
                 }
-                cout << "*Р’С‹ СЂРµС€РёР»Рё РґРѕР±Р°РІРёС‚СЊ";
-                cout << " СЌР»РµРјРµРЅС‚ РІ РѕС‡РµСЂРµРґСЊ*\n";
-                cout << "\nР’РІРµРґРёС‚Рµ РґРѕР±Р°РІР»СЏРµРјС‹Р№ СЌР»РµРјРµРЅС‚: ";
+                cout << "*Вы решили добавить";
+                cout << " элемент в очередь*\n";
+                cout << "\nВведите добавляемый элемент: ";
                 int addElement = ReadingCorrectValue();
                 EnqueueStack(pushStack, addElement);
                 system("pause");
@@ -121,12 +121,12 @@ void QueueStackActions()
                 {
                     break;
                 }
-                cout << "*Р’С‹ СЂРµС€РёР»Рё СѓРґР°Р»РёС‚СЊ";
-                cout << " СЌР»РµРјРµРЅС‚ РёР· РѕС‡РµСЂРµРґРё*\n";
+                cout << "*Вы решили удалить";
+                cout << " элемент из очереди*\n";
                 if (!IsStackEmpty(popStack))
                 {
                     DequeueStack(popStack);
-                    cout << "РЈРґР°Р»СЏРµРјС‹Р№ СЌР»РµРјРµРЅС‚: ";
+                    cout << "Удаляемый элемент: ";
                     cout << popStack.Buffer[popStack.Tail];
                     cout << endl;
                 }
@@ -134,14 +134,14 @@ void QueueStackActions()
                 {
                     ExchangeElements(pushStack, popStack);
                     DequeueStack(popStack);
-                    cout << "РЈРґР°Р»СЏРµРјС‹Р№ СЌР»РµРјРµРЅС‚: ";
+                    cout << "Удаляемый элемент: ";
                     cout << popStack.Buffer[popStack.Tail];
                     cout << endl;
                 }
                 else
                 {
-                    cout << "РћС‡РµСЂРµРґСЊ РїСѓСЃС‚Р°!\n";
-                    cout << "Р’РѕР·РІСЂР°С‰РµРЅРёРµ РІ РјРµРЅСЋ РІС‹Р±РѕСЂР°\n";
+                    cout << "Очередь пуста!\n";
+                    cout << "Возвращение в меню выбора\n";
                 }
                 system("pause");
                 break;
@@ -162,18 +162,18 @@ void QueueStackActions()
                 {
                     DeleteQueueStack(pushStack);
                     DeleteQueueStack(popStack);
-                    cout << "*(РћС‡РµСЂРµРґСЊ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё СѓРґР°Р»РµРЅР°)*\n";
+                    cout << "*(Очередь автоматически удалена)*\n";
                 }
-                cout << "*Р’С‹ СЂРµС€РёР»Рё РІРµСЂРЅСѓС‚СЊСЃСЏ ";
-                cout << "РІ РіР»Р°РІРЅРѕРµ РјРµРЅСЋ*\n";
+                cout << "*Вы решили вернуться ";
+                cout << "в главное меню*\n";
                 queueExit = false;
                 system("pause");
                 break;
             }
             default:
             {
-                cout << "Р’С‹ РѕС€РёР±Р»РёСЃСЊ!\n";
-                cout << "Р’РІРµРґРёС‚Рµ РїСЂР°РІРёР»СЊРЅРѕ!\n\n";
+                cout << "Вы ошиблись!\n";
+                cout << "Введите правильно!\n\n";
                 system("pause");
                 break;
             }
