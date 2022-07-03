@@ -14,11 +14,11 @@ enum MenuRingBuffer
     RingBufferExitItem = 6
 };
 
-/// @brief Функция вывода Кольцевого Буфера на экран
-/// @param ringBuffer Переменная структуры Кольцевого Буфера
+/// @brief Р¤СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° РљРѕР»СЊС†РµРІРѕРіРѕ Р‘СѓС„РµСЂР° РЅР° СЌРєСЂР°РЅ
+/// @param ringBuffer РџРµСЂРµРјРµРЅРЅР°СЏ СЃС‚СЂСѓРєС‚СѓСЂС‹ РљРѕР»СЊС†РµРІРѕРіРѕ Р‘СѓС„РµСЂР°
 void PrintRingBuffer(RingBuffer& ringBuffer)
 {
-    cout << "\nКольцевой буфер:\n";
+    cout << "\nРљРѕР»СЊС†РµРІРѕР№ Р±СѓС„РµСЂ:\n";
     for (int i = 0; i < ringBuffer.BufferSize; i++)
     {
         if (ringBuffer.IsPlaceFilled[i] == true)
@@ -42,21 +42,21 @@ void BufferActions()
     bool ringExit = true;
     while (ringExit)
     {
-        cout << "\nЧто вы хотите сделать?\n";
-        cout << "1: Количество свободных ячеек\n";
-        cout << "2: Количество занятых ячеек\n";
-        cout << "3: Добавление элемента\n";
-        cout << "4: Удаление элемента\n";
-        cout << "5: Вывод кольцевого буфера\n";
-        cout << "6: Закончить работу с кольцевым буфером\n";
-        cout << "\nВведите ваш вариант действий: ";
+        cout << "\nР§С‚Рѕ РІС‹ С…РѕС‚РёС‚Рµ СЃРґРµР»Р°С‚СЊ?\n";
+        cout << "1: РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРІРѕР±РѕРґРЅС‹С… СЏС‡РµРµРє\n";
+        cout << "2: РљРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РЅСЏС‚С‹С… СЏС‡РµРµРє\n";
+        cout << "3: Р”РѕР±Р°РІР»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р°\n";
+        cout << "4: РЈРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р°\n";
+        cout << "5: Р’С‹РІРѕРґ РєРѕР»СЊС†РµРІРѕРіРѕ Р±СѓС„РµСЂР°\n";
+        cout << "6: Р—Р°РєРѕРЅС‡РёС‚СЊ СЂР°Р±РѕС‚Сѓ СЃ РєРѕР»СЊС†РµРІС‹Рј Р±СѓС„РµСЂРѕРј\n";
+        cout << "\nР’РІРµРґРёС‚Рµ РІР°С€ РІР°СЂРёР°РЅС‚ РґРµР№СЃС‚РІРёР№: ";
         int localNumber = ReadingCorrectValue();
         cout << endl;
         switch (localNumber)
         {
             case FreePlace:
             {
-                cout << "Число свободных ячеек: ";
+                cout << "Р§РёСЃР»Рѕ СЃРІРѕР±РѕРґРЅС‹С… СЏС‡РµРµРє: ";
                 cout << FreePlaceCount(ringBuffer);
                 cout << endl;
                 system("pause");
@@ -64,7 +64,7 @@ void BufferActions()
             }
             case EmployedPlace:
             {
-                cout << "Число занятых ячеек: ";
+                cout << "Р§РёСЃР»Рѕ Р·Р°РЅСЏС‚С‹С… СЏС‡РµРµРє: ";
                 cout << FilledPlaceCount(ringBuffer);
                 cout << endl;
                 system("pause");
@@ -72,9 +72,9 @@ void BufferActions()
             }
             case AddRingBufferItem:
             {
-                cout << "*Вы решили добавить";
-                cout << " элемент в кольцевой буфер*\n";
-                cout << "\nВведите добавляемый элемент: ";
+                cout << "*Р’С‹ СЂРµС€РёР»Рё РґРѕР±Р°РІРёС‚СЊ";
+                cout << " СЌР»РµРјРµРЅС‚ РІ РєРѕР»СЊС†РµРІРѕР№ Р±СѓС„РµСЂ*\n";
+                cout << "\nР’РІРµРґРёС‚Рµ РґРѕР±Р°РІР»СЏРµРјС‹Р№ СЌР»РµРјРµРЅС‚: ";
                 int newElement = ReadingCorrectValue();
                 AddRingBuffer(ringBuffer, newElement);
                 PrintRingBuffer(ringBuffer);
@@ -86,9 +86,9 @@ void BufferActions()
                 if (FilledPlaceCount(ringBuffer) != 0)
                 {
                     DeleteRingBuffer(ringBuffer);
-                    cout << "*Вы решили достать элемент";
-                    cout << " из кольцевого буфера*\n";
-                    cout << "Удаляемый элемент: ";
+                    cout << "*Р’С‹ СЂРµС€РёР»Рё РґРѕСЃС‚Р°С‚СЊ СЌР»РµРјРµРЅС‚";
+                    cout << " РёР· РєРѕР»СЊС†РµРІРѕРіРѕ Р±СѓС„РµСЂР°*\n";
+                    cout << "РЈРґР°Р»СЏРµРјС‹Р№ СЌР»РµРјРµРЅС‚: ";
                     cout << ringBuffer.First << endl;
                     if (FilledPlaceCount(ringBuffer) != 0)
                     {
@@ -97,8 +97,8 @@ void BufferActions()
                 }
                 else
                 {
-                    cout << "Кольцевой буфер пуст!\n";
-                    cout << "Возвращение в меню выбора\n";
+                    cout << "РљРѕР»СЊС†РµРІРѕР№ Р±СѓС„РµСЂ РїСѓСЃС‚!\n";
+                    cout << "Р’РѕР·РІСЂР°С‰РµРЅРёРµ РІ РјРµРЅСЋ РІС‹Р±РѕСЂР°\n";
                 }
                 system("pause");
                 break;
@@ -110,8 +110,8 @@ void BufferActions()
             }
             case RingBufferExitItem:
             {
-                cout << "*Вы решили вернуться ";
-                cout << "в главное меню*\n";
+                cout << "*Р’С‹ СЂРµС€РёР»Рё РІРµСЂРЅСѓС‚СЊСЃСЏ ";
+                cout << "РІ РіР»Р°РІРЅРѕРµ РјРµРЅСЋ*\n";
                 ringExit = false;
                 DeleteBuffer(ringBuffer);
                 system("pause");
@@ -119,8 +119,8 @@ void BufferActions()
             }
             default:
             {
-                cout << "Вы ошиблись!\n";
-                cout << "Введите правильно!\n\n";
+                cout << "Р’С‹ РѕС€РёР±Р»РёСЃСЊ!\n";
+                cout << "Р’РІРµРґРёС‚Рµ РїСЂР°РІРёР»СЊРЅРѕ!\n\n";
                 system("pause");
                 break;
             }
