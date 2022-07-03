@@ -1,5 +1,5 @@
 #pragma once
 #include "QueueStack.h"
 
-/// @brief Функция действий с Очередью на Стеках
+/// @brief Р¤СѓРЅРєС†РёСЏ РґРµР№СЃС‚РІРёР№ СЃ РћС‡РµСЂРµРґСЊСЋ РЅР° РЎС‚РµРєР°С…
 void QueueStackActions();
